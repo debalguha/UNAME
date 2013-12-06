@@ -16,23 +16,24 @@ import com.va.uma.model.UserInfo;
 @Repository("userInfoDao")
 @Transactional
 public class UserInfoDaoImpl extends BaseDao implements IUserInfoDao {
-
+	@Override
 	public void save(UserInfo entity) {
 		super.save(entity);
 	}
-
+	@Override
 	public void update(UserInfo entity) {
 		super.update(entity);
 	}
-
+	@Override
 	public void delete(UserInfo entity) {
 		super.delete(entity);
 	}
-
+	@Override
 	public UserInfo findById(String id) {
 		return (UserInfo) super.findById(UserInfo.class, id);
 	}
-
+	@SuppressWarnings("unchecked")
+	@Override
 	public List<UserAppAccess> listUserAppAccess(String userId) {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "from UserAppAccess where userInfo.id = ?";
@@ -40,7 +41,8 @@ public class UserInfoDaoImpl extends BaseDao implements IUserInfoDao {
 		query.setParameter(0, userId);
 		return query.list();
 	}
-
+	@SuppressWarnings("rawtypes")
+	@Override
 	public boolean isAppAccessUsed(String appName, String accessId) {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "from UserAppAccess where appName = ? and access.id = ?";
@@ -50,7 +52,7 @@ public class UserInfoDaoImpl extends BaseDao implements IUserInfoDao {
 		List list = query.list();
 		return !CollectionUtils.isEmpty(list);
 	}
-
+	@Override
 	public UserInfo findByUsername(String username) {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "from UserInfo where username=?";
@@ -58,7 +60,7 @@ public class UserInfoDaoImpl extends BaseDao implements IUserInfoDao {
 		query.setParameter(0, username);
 		return (UserInfo) query.uniqueResult();
 	}
-
+	@Override
 	public UserInfo findByEmail(String email) {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "from UserInfo where email=?";
@@ -75,19 +77,19 @@ public class UserInfoDaoImpl extends BaseDao implements IUserInfoDao {
 		Query query = session.createQuery(hql);
 		return query.list();
 	}
-
+	@Override
 	public void saveUserAppAccess(UserAppAccess entity) {
 		super.save(entity);
 	}
-
+	@Override
 	public void deleteUserAppAccess(UserAppAccess entity) {
 		super.delete(entity);
 	}
-
+	@Override
 	public void updateUserAppAccess(UserAppAccess entity) {
 		super.update(entity);
 	}
-
+	@Override
 	public void deleteAllAppAccessByUserId(String userId) {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "delete from UserAppAccess where userInfo.id = ?";

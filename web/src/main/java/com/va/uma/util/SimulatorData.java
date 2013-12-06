@@ -56,9 +56,9 @@ public class SimulatorData {
 
 	public static List<AppAccess> appAccessList = new ArrayList<AppAccess>();
 	static {
-		for (Iterator iterator = appList.iterator(); iterator.hasNext();) {
+		for (Iterator<Application> iterator = appList.iterator(); iterator.hasNext();) {
 			Application app = (Application) iterator.next();
-			for (Iterator iterator2 = accessList.iterator(); iterator2.hasNext();) {
+			for (Iterator<Access> iterator2 = accessList.iterator(); iterator2.hasNext();) {
 				Access access = (Access) iterator2.next();
 				appAccessList.add(new AppAccess(app.getName(), access));
 			}
@@ -67,9 +67,9 @@ public class SimulatorData {
 
 	public static List<UserAppAccess> userAppAccessList = new ArrayList<UserAppAccess>();
 	static {
-		for (Iterator iterator3 = userList.iterator(); iterator3.hasNext();) {
+		for (Iterator<UserInfo> iterator3 = userList.iterator(); iterator3.hasNext();) {
 			UserInfo user = (UserInfo) iterator3.next();
-			for (Iterator iterator = appList.iterator(); iterator.hasNext();) {
+			for (Iterator<Application> iterator = appList.iterator(); iterator.hasNext();) {
 				Application app = (Application) iterator.next();
 				userAppAccessList.add(new UserAppAccess(user, app.getName(), accessList.get(new Random().nextInt(2))));
 			}

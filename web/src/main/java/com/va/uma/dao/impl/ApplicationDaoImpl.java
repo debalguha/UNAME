@@ -15,15 +15,15 @@ import com.va.uma.model.Application;
 @Repository("applicationDao")
 @Transactional
 public class ApplicationDaoImpl extends BaseDao implements IApplicationDao {
-
+	@Override
 	public void saveAppAccess(AppAccess entity) {
 		super.save(entity);
 	}
-
+	@Override
 	public void updateAppAccess(AppAccess entity) {
 		super.update(entity);
 	}
-
+	@Override
 	public void delete(AppAccess entity) {
 		super.delete(entity);
 	}
@@ -36,11 +36,11 @@ public class ApplicationDaoImpl extends BaseDao implements IApplicationDao {
 		Query query = session.createQuery(hql);
 		return query.list();
 	}
-
+	@Override
 	public AppAccess findById(String id) {
 		return (AppAccess) super.findById(AppAccess.class, id);
 	}
-
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<Application> listAllApp() {
 		Session session = sessionFactory.getCurrentSession();

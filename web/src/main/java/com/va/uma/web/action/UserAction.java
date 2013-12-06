@@ -54,6 +54,7 @@ public class UserAction extends BaseAction {
 		return "user/edit";
 	}
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/user/save.do")
 	public void saveUser(HttpServletRequest request, HttpServletResponse response, Model model,
 			@RequestParam(value = "username") String username, @RequestParam(value = "password") String password,
@@ -68,7 +69,7 @@ public class UserAction extends BaseAction {
 			@RequestParam(value = "requestDetail", required = false, defaultValue = "") String requestDetail) {
 		UserInfo user = new UserInfo();
 
-		Map requestMap = new HashMap(request.getParameterMap());
+		Map<String, String> requestMap = new HashMap<String, String>(request.getParameterMap());
 		requestMap.remove("teamId");
 		requestMap.remove("type");
 		requestMap.remove("status");
@@ -102,11 +103,11 @@ public class UserAction extends BaseAction {
 		}
 	}
 
-	private Map<String, String> getUserAppAccess(HttpServletRequest request, Map copyMap) {
+	private Map<String, String> getUserAppAccess(HttpServletRequest request, Map<String, String> copyMap) {
 		Map<String, String> appAccessMap = new HashMap<String, String>();
-		Set keySet = copyMap.keySet();
+		Set<String> keySet = copyMap.keySet();
 		Set<String> appSet = new HashSet<String>();
-		Iterator iterator = keySet.iterator();
+		Iterator<String> iterator = keySet.iterator();
 		String appPrefix = "app:";
 		while (iterator.hasNext()) {
 			String key = (String) iterator.next();
@@ -123,6 +124,7 @@ public class UserAction extends BaseAction {
 		return appAccessMap;
 	}
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/user/update.do")
 	public void updateUser(HttpServletRequest request, HttpServletResponse response, Model model,
 			@RequestParam(value = "userId") String userId, @RequestParam(value = "status") String status,
@@ -136,7 +138,7 @@ public class UserAction extends BaseAction {
 			@RequestParam(value = "requestDetail", required = false, defaultValue = "") String requestDetail) {
 		UserInfo user = userService.getUserInfoById(userId);
 
-		Map requestMap = new HashMap(request.getParameterMap());
+		Map<String, String> requestMap = new HashMap<String, String>(request.getParameterMap());
 		requestMap.remove("teamId");
 		requestMap.remove("type");
 		requestMap.remove("status");

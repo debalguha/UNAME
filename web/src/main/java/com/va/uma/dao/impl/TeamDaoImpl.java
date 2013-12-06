@@ -14,19 +14,19 @@ import com.va.uma.model.Team;
 @Repository("teamDao")
 @Transactional
 public class TeamDaoImpl extends BaseDao implements ITeamDao {
-
+	@Override
 	public void save(Team entity) {
 		super.save(entity);
 	}
-
+	@Override
 	public void update(Team entity) {
 		super.update(entity);
 	}
-
+	@Override
 	public void delete(Team entity) {
 		super.delete(entity);
 	}
-
+	@Override
 	public Team findById(String id) {
 		return (Team) super.findById(Team.class, id);
 	}

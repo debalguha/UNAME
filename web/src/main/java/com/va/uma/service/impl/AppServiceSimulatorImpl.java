@@ -22,9 +22,9 @@ import com.va.uma.util.SimulatorData;
 public class AppServiceSimulatorImpl implements IAppService {
 
 	private static Logger logger = LoggerFactory.getLogger(AppServiceSimulatorImpl.class);
-
+	@Override
 	public Team getTeam(String teamId) {
-		for (Iterator iterator = SimulatorData.teamList.iterator(); iterator.hasNext();) {
+		for (Iterator<Team> iterator = SimulatorData.teamList.iterator(); iterator.hasNext();) {
 			Team item = (Team) iterator.next();
 			if (item.getId().equals(teamId)) {
 				return item;
@@ -32,25 +32,26 @@ public class AppServiceSimulatorImpl implements IAppService {
 		}
 		return null;
 	}
-
+	@Override
 	public List<Access> getAccessList() {
 		return SimulatorData.accessList;
 	}
 
+	@Override
 	public List<Team> getTeamList() {
 		return SimulatorData.teamList;
 	}
-
+	@Override
 	public List<AppAccess> getAppAccessList() {
 		return SimulatorData.appAccessList;
 	}
-
+	@Override
 	public void saveTeam(Team team) {
 		SimulatorData.teamList.add(team);
 	}
-
+	@Override
 	public void updateTeam(Team team) {
-		for (Iterator iterator = SimulatorData.teamList.iterator(); iterator.hasNext();) {
+		for (Iterator<Team> iterator = SimulatorData.teamList.iterator(); iterator.hasNext();) {
 			Team item = (Team) iterator.next();
 			if (item.getId().equals(team.getId())) {
 				try {
@@ -61,13 +62,13 @@ public class AppServiceSimulatorImpl implements IAppService {
 			}
 		}
 	}
-
+	@Override
 	public void saveAccess(Access entity) {
 		SimulatorData.accessList.add(entity);
 	}
-
+	@Override
 	public void updateAccess(Access entity) {
-		for (Iterator iterator = SimulatorData.accessList.iterator(); iterator.hasNext();) {
+		for (Iterator<Access> iterator = SimulatorData.accessList.iterator(); iterator.hasNext();) {
 			Access item = (Access) iterator.next();
 			if (item.getId().equals(entity.getId())) {
 				try {
@@ -78,9 +79,9 @@ public class AppServiceSimulatorImpl implements IAppService {
 			}
 		}
 	}
-
+	@Override
 	public Access getAccess(String accessId) {
-		for (Iterator iterator = SimulatorData.accessList.iterator(); iterator.hasNext();) {
+		for (Iterator<Access> iterator = SimulatorData.accessList.iterator(); iterator.hasNext();) {
 			Access item = (Access) iterator.next();
 			if (item.getId().equals(accessId)) {
 				return item;
@@ -88,7 +89,7 @@ public class AppServiceSimulatorImpl implements IAppService {
 		}
 		return null;
 	}
-
+	@Override
 	public boolean isAccessUsed(String accessId) {
 		boolean flag = false;
 		List<AppAccess> list = SimulatorData.appAccessList;
@@ -100,10 +101,10 @@ public class AppServiceSimulatorImpl implements IAppService {
 		}
 		return flag;
 	}
-
+	@Override
 	public void deleteAccess(String accessId) {
 		List<Access> newList = new ArrayList<Access>();
-		for (Iterator iterator = SimulatorData.accessList.iterator(); iterator.hasNext();) {
+		for (Iterator<Access> iterator = SimulatorData.accessList.iterator(); iterator.hasNext();) {
 			Access item = (Access) iterator.next();
 			if (!item.getId().equals(accessId)) {
 				newList.add(item);
@@ -111,17 +112,17 @@ public class AppServiceSimulatorImpl implements IAppService {
 		}
 		SimulatorData.accessList = newList;
 	}
-
+	@Override
 	public List<Application> getApplicationList() {
 		return SimulatorData.appList;
 	}
-
+	@Override
 	public void saveAppAccess(AppAccess entity) {
 		SimulatorData.appAccessList.add(entity);
 	}
-
+	@Override
 	public void updateAppAccess(AppAccess entity) {
-		for (Iterator iterator = SimulatorData.appAccessList.iterator(); iterator.hasNext();) {
+		for (Iterator<AppAccess> iterator = SimulatorData.appAccessList.iterator(); iterator.hasNext();) {
 			AppAccess item = (AppAccess) iterator.next();
 			if (item.getId().equals(entity.getId())) {
 				try {
@@ -132,10 +133,10 @@ public class AppServiceSimulatorImpl implements IAppService {
 			}
 		}
 	}
-
+	@Override
 	public void deleteAppAccess(String id) {
 		List<AppAccess> newList = new ArrayList<AppAccess>();
-		for (Iterator iterator = SimulatorData.appAccessList.iterator(); iterator.hasNext();) {
+		for (Iterator<AppAccess> iterator = SimulatorData.appAccessList.iterator(); iterator.hasNext();) {
 			AppAccess item = (AppAccess) iterator.next();
 			if (!item.getId().equals(id)) {
 				newList.add(item);
@@ -143,9 +144,9 @@ public class AppServiceSimulatorImpl implements IAppService {
 		}
 		SimulatorData.appAccessList = newList;
 	}
-
+	@Override
 	public AppAccess getAppAccess(String id) {
-		for (Iterator iterator = SimulatorData.appAccessList.iterator(); iterator.hasNext();) {
+		for (Iterator<AppAccess> iterator = SimulatorData.appAccessList.iterator(); iterator.hasNext();) {
 			AppAccess item = (AppAccess) iterator.next();
 			if (item.getId().equals(id)) {
 				return item;

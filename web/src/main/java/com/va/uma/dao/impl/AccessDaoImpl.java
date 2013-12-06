@@ -15,19 +15,20 @@ import com.va.uma.model.Access;
 @Transactional
 public class AccessDaoImpl extends BaseDao implements IAccessDao {
 
+	@Override
 	public void save(Access entity) {
 		super.save(entity);
 	}
-
+	@Override
 	public void update(Access entity) {
 		super.update(entity);
 	}
-
+	@Override
 	public void delete(Access entity) {
 		super.delete(entity);
 	}
 
-
+	@Override
 	public Access findById(String id) {
 		return (Access) super.findById(Access.class, id);
 	}

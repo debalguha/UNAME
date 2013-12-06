@@ -20,13 +20,14 @@ import com.va.uma.util.SimulatorData;
 public class UserServiceSimulatorImpl implements IUserService {
 
 	private static Logger logger = LoggerFactory.getLogger(UserServiceSimulatorImpl.class);
-
+	@Override
 	public void saveUser(UserInfo entity) {
 		SimulatorData.userList.add(entity);
 	}
 
+	@Override
 	public void updateUser(UserInfo entity) {
-		for (Iterator iterator = SimulatorData.userList.iterator(); iterator.hasNext();) {
+		for (Iterator<UserInfo> iterator = SimulatorData.userList.iterator(); iterator.hasNext();) {
 			UserInfo user = (UserInfo) iterator.next();
 			if (user.getId().equals(entity.getId())) {
 				try {
@@ -37,10 +38,10 @@ public class UserServiceSimulatorImpl implements IUserService {
 			}
 		}
 	}
-
+	@Override
 	public void deleteUser(String userId) {
 		List<UserInfo> newList = new ArrayList<UserInfo>();
-		for (Iterator iterator = SimulatorData.userList.iterator(); iterator.hasNext();) {
+		for (Iterator<UserInfo> iterator = SimulatorData.userList.iterator(); iterator.hasNext();) {
 			UserInfo user = (UserInfo) iterator.next();
 			if (!user.getId().equals(userId)) {
 				newList.add(user);
@@ -48,10 +49,10 @@ public class UserServiceSimulatorImpl implements IUserService {
 		}
 		SimulatorData.userList = newList;
 	}
-
+	@Override
 	public UserInfo getUserInfoByUsername(String username) {
 		List<UserAppAccess> list = new ArrayList<UserAppAccess>();
-		for (Iterator iterator = SimulatorData.userList.iterator(); iterator.hasNext();) {
+		for (Iterator<UserInfo> iterator = SimulatorData.userList.iterator(); iterator.hasNext();) {
 			UserInfo user = (UserInfo) iterator.next();
 			for (UserAppAccess uaa : SimulatorData.userAppAccessList) {
 				if (uaa.getUserInfo().getId().equals(user.getId())) {
@@ -65,10 +66,10 @@ public class UserServiceSimulatorImpl implements IUserService {
 		}
 		return null;
 	}
-
+	@Override
 	public UserInfo getUserInfoById(String id) {
 		List<UserAppAccess> list = new ArrayList<UserAppAccess>();
-		for (Iterator iterator = SimulatorData.userList.iterator(); iterator.hasNext();) {
+		for (Iterator<UserInfo> iterator = SimulatorData.userList.iterator(); iterator.hasNext();) {
 			UserInfo user = (UserInfo) iterator.next();
 			for (UserAppAccess uaa : SimulatorData.userAppAccessList) {
 				if (uaa.getUserInfo().getId().equals(user.getId())) {
@@ -82,7 +83,7 @@ public class UserServiceSimulatorImpl implements IUserService {
 		}
 		return null;
 	}
-
+	@Override
 	public List<UserInfo> listUser(int pageSize, int pageIndex) {
 		for (UserInfo userInfo : SimulatorData.userList) {
 			List<UserAppAccess> list = new ArrayList<UserAppAccess>();
@@ -95,14 +96,14 @@ public class UserServiceSimulatorImpl implements IUserService {
 		}
 		return SimulatorData.userList;
 	}
-
+	@Override
 	public void saveUserAppAccess(UserAppAccess entity) {
 		SimulatorData.userAppAccessList.add(entity);
 	}
-
+	@Override
 	public void deleteUserAppAccess(UserAppAccess entity) {
 		List<UserAppAccess> newList = new ArrayList<UserAppAccess>();
-		for (Iterator iterator = SimulatorData.userAppAccessList.iterator(); iterator.hasNext();) {
+		for (Iterator<UserAppAccess> iterator = SimulatorData.userAppAccessList.iterator(); iterator.hasNext();) {
 			UserAppAccess uaa = (UserAppAccess) iterator.next();
 			if (!uaa.getId().equals(entity.getId())) {
 				newList.add(uaa);
@@ -110,9 +111,9 @@ public class UserServiceSimulatorImpl implements IUserService {
 		}
 		SimulatorData.userAppAccessList = newList;
 	}
-
+	@Override
 	public void updateUserAppAccess(UserAppAccess entity) {
-		for (Iterator iterator = SimulatorData.userAppAccessList.iterator(); iterator.hasNext();) {
+		for (Iterator<UserAppAccess> iterator = SimulatorData.userAppAccessList.iterator(); iterator.hasNext();) {
 			UserAppAccess uaa = (UserAppAccess) iterator.next();
 			if (uaa.getId().equals(entity.getId())) {
 				try {
@@ -123,10 +124,10 @@ public class UserServiceSimulatorImpl implements IUserService {
 			}
 		}
 	}
-
+	@Override
 	public void deleteAllAppAccessByUserId(String userId) {
 		List<UserAppAccess> newList = new ArrayList<UserAppAccess>();
-		for (Iterator iterator = SimulatorData.userAppAccessList.iterator(); iterator.hasNext();) {
+		for (Iterator<UserAppAccess> iterator = SimulatorData.userAppAccessList.iterator(); iterator.hasNext();) {
 			UserAppAccess uaa = (UserAppAccess) iterator.next();
 			if (!uaa.getUserInfo().getId().equals(userId)) {
 				newList.add(uaa);
@@ -134,9 +135,9 @@ public class UserServiceSimulatorImpl implements IUserService {
 		}
 		SimulatorData.userAppAccessList = newList;
 	}
-
+	@Override
 	public boolean isAppAccessUsed(String appName, String accessId) {
-		for (Iterator iterator = SimulatorData.userAppAccessList.iterator(); iterator.hasNext();) {
+		for (Iterator<UserAppAccess> iterator = SimulatorData.userAppAccessList.iterator(); iterator.hasNext();) {
 			UserAppAccess uaa = (UserAppAccess) iterator.next();
 			if (uaa.getAppName().equals(appName) && uaa.getAccess().getId().equals(accessId)) {
 				return true;
