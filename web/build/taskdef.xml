@@ -1,0 +1,44 @@
+
+<project name="taskdef">
+
+	<path id="weblogic.jar.path">
+		<pathelement location="C:/DevTools/BEA/wlserver_10.3/server/lib/weblogic.jar" />
+		<fileset dir="C:/DevTools/BEA/modules">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<path id="framework.jar.path">
+		<fileset dir="${framework.export.lib}" includes="${framework.lib.list}" />
+
+		<fileset dir="${ws.framework.export.lib}">
+			<include name="ws-framework.jar" />
+		</fileset>
+	</path>
+
+
+	<!--<taskdef resource="net/sf/antcontrib/antlib.xml">
+			<classpath>
+				<pathelement
+					location="${bea.home}/modules/net.sf.antcontrib_1.0.0.0_1-0b2/lib/ant-contrib.jar" />
+			</classpath>
+		</taskdef>-->
+
+	<taskdef name="wsdlc" classname="weblogic.wsee.tools.anttasks.WsdlcTask"
+		classpathref="weblogic.jar.path" />
+
+	<taskdef name="jwsc" classname="weblogic.wsee.tools.anttasks.JwscTask"
+		classpathref="weblogic.jar.path" />
+	<taskdef name="clientgen" classname="weblogic.wsee.tools.anttasks.ClientGenTask"
+		classpathref="weblogic.jar.path" />
+	<taskdef name="wldeploy" classname="weblogic.ant.taskdefs.management.WLDeploy"
+		classpathref="weblogic.jar.path" />
+	<taskdef name="wlappc" classname="weblogic.ant.taskdefs.j2ee.Appc"
+		classpathref="weblogic.jar.path" />
+	<taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask"
+		classpathref="weblogic.jar.path" />
+
+
+
+
+</project>	

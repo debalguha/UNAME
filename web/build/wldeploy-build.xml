@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="deploy">
+	<macrodef name="deploy2wl">
+		<attribute name="source" />
+		<attribute name="ear.deployed.name" />
+		<sequential>
+			<wldeploy action="deploy" name="@{ear.deployed.name}"
+				source="@{source}" user="${wls.username}" password="${wls.password}"
+				adminurl="t3://${wls.admin.server.host}:${wls.admin.server.port}"
+				targets="${wls.server.name}" verbose="true" failonerror="true" />
+		</sequential>
+	</macrodef>
+
+	<macrodef name="undeploy2wl">
+		<attribute name="ear.deployed.name" />
+		<sequential>
+			<wldeploy action="undeploy" name="@{ear.deployed.name}"
+				user="${wls.username}" password="${wls.password}"
+				adminurl="t3://${wls.admin.server.host}:${wls.admin.server.port}"
+				targets="${wls.server.name}" verbose="true" failonerror="false" />
+		</sequential>
+	</macrodef>
+
+	<macrodef name="redeploy2wl">
+		<attribute name="ear.deployed.name" />
+		<sequential>
+			<wldeploy action="redeploy" name="@{ear.deployed.name}"
+				user="${wls.username}" password="${wls.password}"
+				adminurl="t3://${wls.admin.server.host}:${wls.admin.server.port}"
+				targets="${wls.server.name}" verbose="true" failonerror="false" />
+		</sequential>
+	</macrodef>
+
+</project>

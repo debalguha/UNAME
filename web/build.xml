@@ -1,0 +1,24 @@
+<project name="VBA DA DB Utilities" default="build.all" basedir=".">
+ <description>DbUtils build file</description>
+
+ <!-- set global properties for this build -->
+ <property file="./build/build.properties" />
+ <property name="src" location="src" />
+ <property name="build" location="build/classes" />
+ <property name="target" location="target" />
+
+
+ <!-- reference to weblogic deploy build file -->
+ <import file="./build/taskdef.xml" />
+ <import file="./build/wldeploy-build.xml" />
+
+
+ <!-- deploy to weblogic -->
+ <target name="deploy">
+  <deploy2wl source="target/VbaDaUMA.war"
+   ear.deployed.name="VbaDaUMA" />
+ </target>
+
+ <target name="build.all" depends="deploy" />
+
+</project>

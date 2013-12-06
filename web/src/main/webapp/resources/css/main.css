@@ -1,0 +1,115 @@
+/**bootstrap fix**/
+.hero-unit {
+	padding: 20px;
+}
+
+.ZebraDialog_Body form {
+	margin: 0 auto;
+	padding: 20px 0;
+}
+
+.ZebraDialog_Body label {
+	display: inline-block;
+	width: 80px;
+	text-align: right;
+	margin-right: 5px;
+}
+
+.ZebraDialog_Body input {
+	width: 200px;
+}
+
+.base-form label {
+	display: inline-block;
+	text-align: right;
+	min-width: 170px;
+	margin-right: 8px;
+}
+/**common**/
+.container {
+	width: 75%
+}
+
+.td-word-wrap {
+	word-wrap: break-word;
+	word-break: break-all;
+}
+
+.blank20 {
+	height: 20px;
+}
+
+table tr:nth-child(2n) {
+	background-color: #FCF8E3;
+}
+
+#header .logo {
+	display: block;
+	background: url(img/VA-Logo.png) no-repeat;
+	width: 100%;
+	height: 96px;
+}
+
+#header .app-title {
+	background-color: RGB(98, 36, 35);
+	color: #fff;
+	font-size: 1.2em;
+	margin-top: -1px;
+	font-weight: bold;
+	height: 50px;
+	line-height: 50px;
+	padding-left: 20px;
+}
+
+.login-form {
+	max-width: 450px;
+	padding: 19px 29px 29px;
+	margin: 0px auto;
+	background-color: #fff;
+	border: 1px solid #e5e5e5;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.form-signin-heading {
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+.login-form input {
+	font-size: 16px;
+	height: auto;
+	padding: 7px 9px;
+	width: 250px;
+}
+
+.login-form  div {
+	margin-bottom: 15px;
+}
+
+.required-field {
+	margin-left: 10px;
+	color: red;
+	content: "*";
+}
+
+table caption {
+	font-size: 1.2em;
+	font-weight: bold;
+	background-color: #ccc;
+	padding: 10px 0;
+}
+
+input[type="radio"] {
+	margin: 0px;
+}
+
+.logout-link,.logout-link:hover{
+	color: #fff;
+	text-decoration: none;
+	padding-right: 30px;
+}
