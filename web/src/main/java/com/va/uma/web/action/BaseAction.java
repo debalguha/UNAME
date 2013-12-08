@@ -18,14 +18,14 @@ public class BaseAction {
 	private static final Logger logger = LoggerFactory.getLogger(BaseAction.class);
 	public static final String ACCOUNT_SEESION_ID = "session_user_id";
 
-//	@Resource(name = "appService")
-//	protected IAppService appService;
-//	@Resource(name = "userService")
-//	protected IUserService userService;
-	@Resource(name = "appServiceSimulator")
+	@Resource(name = "appService")
+	protected IAppService appService;
+	@Resource(name = "userService")
+	protected IUserService userService;
+/*	@Resource(name = "appServiceSimulator")
 	protected IAppService appService;
 	@Resource(name = "userServiceSimulator")
-	protected IUserService userService;
+	protected IUserService userService;*/
 	/**
 	 * response json text
 	 * 

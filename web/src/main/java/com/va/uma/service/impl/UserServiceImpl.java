@@ -2,6 +2,7 @@ package com.va.uma.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +15,7 @@ import com.va.uma.service.IUserService;
 @Transactional
 public class UserServiceImpl implements IUserService {
 
-	// @Autowired
+	@Autowired
 	private IUserInfoDao userInfoDao;
 
 	@Override

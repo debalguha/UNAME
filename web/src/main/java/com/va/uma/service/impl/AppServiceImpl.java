@@ -2,7 +2,9 @@ package com.va.uma.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.va.uma.dao.IAccessDao;
@@ -18,15 +20,14 @@ import com.va.uma.service.IAppService;
 @Transactional
 public class AppServiceImpl implements IAppService {
 
-	// @Autowired
+	@Autowired
 	IAccessDao accessDefDao;
-	// @Autowired
+	@Autowired
 	ITeamDao teamDao;
-	// @Autowired
+	@Autowired
 	IApplicationDao applicationDao;
 
-	// @Transactional(propagation = Propagation.REQUIRED, rollbackFor =
-	// RuntimeException.class)
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
 
 	@Override
 	public Team getTeam(String teamId) {

@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
+import org.hibernate.Session;
+
 import com.va.uma.model.Access;
 import com.va.uma.model.AppAccess;
 import com.va.uma.model.Application;
@@ -74,5 +76,21 @@ public class SimulatorData {
 				userAppAccessList.add(new UserAppAccess(user, app.getName(), accessList.get(new Random().nextInt(2))));
 			}
 		}
+	}
+	public static void createDummyDataInDB(Session session) throws Exception{
+		session.getTransaction().begin();
+		for(UserInfo user : userList)
+			session.saveOrUpdate(user);
+		for(Application app : appList)
+			session.saveOrUpdate(app);
+		for(Access access : accessList)
+			session.saveOrUpdate(access);
+		for(Team team : teamList)
+			session.saveOrUpdate(team);
+		for(AppAccess appAccess : appAccessList)
+			session.saveOrUpdate(appAccess);
+		for(UserAppAccess userAppAccess : userAppAccessList)
+			session.saveOrUpdate(userAppAccess);		
+		session.getTransaction().commit();
 	}
 }
