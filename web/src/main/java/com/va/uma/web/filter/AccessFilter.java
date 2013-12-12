@@ -22,12 +22,14 @@ public class AccessFilter implements Filter {
 	private static List<String> ignoredURI = new ArrayList<String>();
 
 	private static final String LOGIN_URI = "/login.do";
+	private static final String DATA_CREATE_URI = "/data/dummy/create.do";
 
 	private static List<String> ignoredPath = new ArrayList<String>();
 
 	static {
 		ignoredPath.add("/system/checklogin.do");
 		ignoredPath.add(LOGIN_URI);
+		ignoredPath.add(DATA_CREATE_URI);
 	}
 
 	@Override
